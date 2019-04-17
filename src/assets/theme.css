@@ -1,0 +1,48 @@
+/* rewrite bootstrap */
+
+.badge-position-drag {
+    top: 1px;
+    right: 1px;
+    padding: 2px 6px;
+    position: absolute;
+    z-index: 10;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+/*********************Draggable Start***********************/
+div .drag-list{
+    padding:0px;
+}
+
+.badge{
+    border-radius: 50% !important;
+    background-color: red !important;
+    min-height: 15px !important;
+    min-width: 15px !important;
+    padding:0px !important;
+    line-height: 15px !important;
+}
+
+.drag-item{
+    /* margin: 5px 0px; */
+    padding:5px !important;
+}
+
+.drag-item>div{
+    height: 62px;
+}
+
+.app-icon {
+    height: 34px !important;
+    width: auto !important;
+    padding: 0px;
+    margin: 3px auto;
+    font-size: 30px;
+    color: #46a1ff;
+    display: table-caption;
+    /* display: -webkit-inline-box */
+}
+/*********************Draggable End***********************/
