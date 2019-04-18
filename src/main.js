@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import '../src/assets/theme.css'
+// import '../src/assets/theme.css'
 import $ from 'jquery'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'

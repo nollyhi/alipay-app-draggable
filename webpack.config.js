@@ -2,16 +2,18 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  // entry: './src/main.js',
-  entry:'./src/components/alipay-applet-draggable/index.js',
+  // entry: './src/main.js',    //本地调试配置
+  
+  entry:'./src/components/alipay-applet-draggable/index.js',        //打包配置
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    // filename: 'build.js'
-    filename: 'alipayAppletDraggable.js',
-    library:'alipayAppletDraggable',
-    libraryTarget:'umd',
-    umdNamedDefine:true
+    // filename: 'build.js',    //本地调试配置
+
+    filename: 'alipayAppletDraggable.js',    //打包配置
+    library:'alipayAppletDraggable',       //打包配置
+    libraryTarget:'umd',     //打包配置
+    umdNamedDefine:true      //打包配置
   },
   module: {
     rules: [

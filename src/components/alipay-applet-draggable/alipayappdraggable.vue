@@ -1,18 +1,18 @@
 <template>
-    <drag class="col-xs-12 drag-list" :list="favoriteAppArr" draggable=".moveable" v-bind="dragOptions" :disabled="dragDisable" @start="drag = true" @end="drag = false">
-        <div class="col-xs-3 drag-item moveable" v-for="(element,appIndex) in favoriteAppArr" :key="appIndex">
+    <drag class="col-xs-12 ali-drag-list" :list="favoriteAppArr" draggable=".moveable" v-bind="dragOptions" :disabled="dragDisable" @start="drag = true" @end="drag = false">
+        <div class="col-xs-3 ali-drag-item moveable" v-for="(element,appIndex) in favoriteAppArr" :key="appIndex">
             <div :style="dragStyle" >
                 <div v-if="editBtn">
-                    <div v-if="!dragDisable" class="badge-position-drag" @click="RmFavorApp(element)">
-                        <div class="badge">一</div>
+                    <div v-if="!dragDisable" class="ali-badge-position-drag" @click="rmFavorApp(element)">
+                        <div class="ali-remove-btn"><hr class="ali-minus" /></div>
                     </div>
                 </div>
-                <img v-if="iconType === 'img'" class="app-icon" :src="imgIconUrl(element)" style="display: -webkit-inline-box">
-                <span v-if="iconType === 'bootstrap'" class="app-icon" :class="bootstrapIconClass(element)" aria-hidden="true"></span>
-                <div>{{element.name}}</div>
+                <img v-if="iconType === 'img'" class="ali-app-icon" :src="imgIconUrl(element)" style="display: -webkit-inline-box">
+                <span v-if="iconType === 'bootstrap'" class="ali-app-icon" :class="bootstrapIconClass(element)" aria-hidden="true"></span>
+                <div>{{appName(element)}}</div>
             </div>
         </div>
-        <div v-if="favoriteAppArr.length < favoriteCount" class="col-xs-3 drag-item unmoveable" key="blockapp">
+        <div v-if="favoriteAppArr.length < favoriteCount" class="col-xs-3 ali-drag-item unmoveable" key="blockapp">
             <div :style="dragStyle" style="height: 62px;border: dotted;border-color: gainsboro;background:#000;">
             </div>
         </div>
@@ -66,6 +66,11 @@ export default {
             type:String,
             required:true,
             default:""
+        },
+        appBindFieldName:{
+            type:String,
+            required:true,
+            default:""
         }
     },
     computed:{
@@ -87,7 +92,7 @@ export default {
 
     },
     methods:{
-        RmFavorApp(item) {
+        rmFavorApp(item) {
             this.$emit('RmFavorApp',item);
         },
         bootstrapIconClass(item){
@@ -99,50 +104,57 @@ export default {
             if(this.iconType === 'img'){
                 return item[this.iconBindFieldName];
             }
+        },
+        appName(item){
+            return item[this.appBindFieldName];
         }
     }
 }
 </script>
 
-<style>
+<style scoped>
+
 /* rewrite bootstrap */
 
-.badge-position-drag {
-    top: 1px;
-    right: 1px;
-    padding: 2px 6px;
+.ali-badge-position-drag {
+    top: 0px;
+    right: 0px;
+    padding: 8px;
     position: absolute;
     z-index: 10;
+    line-height: normal;
+    font-size: 10px;
 }
 
-a{
-    text-decoration: none !important;
-}
 
 /*********************Draggable Start***********************/
-div .drag-list{
+div .ali-drag-list{
     padding:0px;
 }
 
-.badge{
+.ali-remove-btn{
     border-radius: 50% !important;
     background-color: red !important;
     min-height: 15px !important;
     min-width: 15px !important;
     padding:0px !important;
     line-height: 15px !important;
+    font-size: 14px !important;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.drag-item{
+.ali-drag-item{
     /* margin: 5px 0px; */
     padding:5px !important;
+    text-align: center;
 }
 
-.drag-item>div{
+.ali-drag-item>div{
     height: 62px;
 }
 
-.app-icon {
+.ali-app-icon {
     height: 34px !important;
     width: auto !important;
     padding: 0px;
@@ -151,6 +163,12 @@ div .drag-list{
     color: #46a1ff;
     display: table-caption;
     /* display: -webkit-inline-box */
+}
+
+.ali-minus{
+    margin:7px 0 0 1px !important;
+    width: 13px;
+
 }
 /*********************Draggable End***********************/
 
