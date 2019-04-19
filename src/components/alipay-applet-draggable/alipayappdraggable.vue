@@ -89,12 +89,14 @@ export default {
                 return "background-color:#eee";
             }
         },
-
     },
     methods:{
+        //START 对外公布事件
         rmFavorApp(item) {
             this.$emit('RmFavorApp',item);
         },
+        //END 对外公布事件
+
         bootstrapIconClass(item){
             if(this.iconType === 'bootstrap'){
                 return item[this.iconBindFieldName]||"glyphicon glyphicon-search";
