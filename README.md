@@ -57,12 +57,14 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
             type:String,
             required:true,
             default:""
+        },
+        appBindFieldName:{      //app名称绑定字段
+            type:String,
+            required:true,
+            default:""
         }
 
 ## 事件
 
-        RmFavorApp      //移除偏好app事件
-        bootstrapIconClass      //绑定bootstrap图标样式名（当属性iconType设置为 bootstrap 时此事件生效）
-        imgIconUrl      //绑定img图片地址链接（当属性iconType设置为 img 时此事件生效）
-
+        RmFavorApp      //移除偏好app事件            
 
